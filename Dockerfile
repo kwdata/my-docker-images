@@ -5,6 +5,6 @@ RUN touch /usr/local/etc/php/conf.d/upload-limit.ini \
     && echo "post_max_size = 32M" >> /usr/local/etc/php/conf.d/upload-limit.ini
 RUN a2enmod expires headers
 VOLUME /var/www/html
-COPY docker-entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"] 
+COPY docker-entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["docker-entrypoint.sh"] 
 CMD ["apache2-foreground"]
